@@ -1,4 +1,5 @@
 using DemoEmailApplication.DataBase;
+using DemoEmailApplication.EmailDM.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace DemoEmailApplication
@@ -8,7 +9,13 @@ namespace DemoEmailApplication
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var emailconfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
+            builder.Services.AddControllers();
+
             builder.Services
+                
+                .AddSingleton(emailconfig)
+                .AddScoped<IEmailSender, EmailSender>()
                 .AddDbContext<DataContext>(o =>
                 {
                     o.UseSqlServer(builder.Configuration.GetConnectionString("CeyhunPc"));
