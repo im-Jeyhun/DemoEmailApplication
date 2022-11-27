@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DemoEmailApplication.EmailDM.Models;
+using DemoEmailApplication.NotifactionDm.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoEmailApplication.DataBase
 {
@@ -10,6 +12,9 @@ namespace DemoEmailApplication.DataBase
 
         }
 
-        
+       public DbSet<Email> Emails { get; set; }
+
+        public DbSet<Notification> Notifactions { get; set; }
+
     }
 }
