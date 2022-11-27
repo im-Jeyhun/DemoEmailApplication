@@ -1,0 +1,31 @@
+﻿@model List<ListItemViewModel>
+
+
+<body>
+    <div class="container">
+        <a class="btn btn-primary" asp-controller="Noitification" asp-action="Send"> Send Email </a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">From</th>
+                    <th scope="col">To</th>
+                    <th scope="col">Tittle</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var email in Model)
+                {
+                    <tr>
+                        <td>@email.From</td>
+                        <td>@email.To</td>
+                        <td>@email.Title</td>
+                    </tr>
+                }
+               
+              
+            </tbody>
+        </table>
+    </div>
+</body>
